@@ -1,0 +1,33 @@
+[build-system]
+requires = ["setuptools>=61"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "hermescad-mcp"
+version = "0.1.0"
+description = "MCP servers that let Hermes Agent build FreeCAD models from drawings and Blender meshes from pictures"
+authors = [{name = "HermesCAD contributors"}]
+keywords = ["freecad", "blender", "mcp", "cad", "image-to-3d", "hermes-agent"]
+requires-python = ">=3.10"
+license = {text = "MIT"}
+dependencies = [
+  "mcp>=1.20,<2",
+  "pillow>=10",
+  "opencv-python-headless>=4.8",
+  "numpy>=1.24",
+  "gradio_client>=1.3",
+]
+
+[project.urls]
+Homepage = "https://github.com/andrianojson-code/hermescad"
+Issues = "https://github.com/andrianojson-code/hermescad/issues"
+
+[project.scripts]
+hermescad-mcp = "hermescad_mcp.server:main"
+hermes3d-mcp = "hermescad_mcp.blender_server:main"
+
+[tool.setuptools]
+packages = ["hermescad_mcp"]
+
+[tool.setuptools.package-data]
+hermescad_mcp = ["SPEC.md"]

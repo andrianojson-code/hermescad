@@ -1,0 +1,84 @@
+{
+  "name": "L_Bracket_Tab",
+  "parameters": {
+    "length": 40,
+    "depth": 25,
+    "height": 33,
+    "upright_t": 10,
+    "base_t": 8,
+    "tab_hole_d": 10,
+    "tab_hole_z": 20,
+    "base_hole_d": 9,
+    "top_r": 12,
+    "inner_r": 3
+  },
+  "features": [
+    {
+      "id": "upright",
+      "type": "pad",
+      "plane": "YZ",
+      "profile": {
+        "type": "rect",
+        "w": "depth",
+        "h": "height",
+        "x": 0,
+        "y": "height/2"
+      },
+      "length": "upright_t"
+    },
+    {
+      "id": "base",
+      "type": "pad",
+      "plane": "XY",
+      "profile": {
+        "type": "rect",
+        "w": "length-upright_t",
+        "h": "depth",
+        "x": "(length+upright_t)/2",
+        "y": 0
+      },
+      "length": "base_t"
+    },
+    {
+      "id": "tab_round",
+      "type": "fillet",
+      "edges": [
+        "top",
+        "parallel_x"
+      ],
+      "radius": "top_r"
+    },
+    {
+      "id": "tab_hole",
+      "type": "hole",
+      "plane": "YZ",
+      "profile": {
+        "type": "circle",
+        "d": "tab_hole_d",
+        "x": 0,
+        "y": "tab_hole_z"
+      }
+    },
+    {
+      "id": "base_hole",
+      "type": "hole",
+      "plane": "XY",
+      "offset": "base_t",
+      "profile": {
+        "type": "circle",
+        "d": "base_hole_d",
+        "x": "(length+upright_t)/2",
+        "y": 0
+      }
+    },
+    {
+      "id": "inner_bend",
+      "type": "fillet",
+      "edges": [
+        "parallel_y",
+        "!outer"
+      ],
+      "radius": "inner_r"
+    }
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "name": "Flange",
+  "parameters": {"D": 100, "d_bore": 30, "H": 12, "hub_d": 50, "hub_h": 20, "bolt_d": 9, "pcd": 75},
+  "features": [
+    {"id": "disk", "type": "revolve", "plane": "XZ",
+     "profile": {"type": "polygon", "points": [
+        ["d_bore/2", 0], ["D/2", 0], ["D/2", "H"], ["hub_d/2", "H"],
+        ["hub_d/2", "H+hub_h"], ["d_bore/2", "H+hub_h"]]}},
+    {"id": "bolts", "type": "hole", "plane": "XY", "offset": "H",
+     "profile": {"type": "circle_pattern", "count": 6, "pcd": "pcd", "d": "bolt_d"}},
+    {"id": "edge_chamfer", "type": "chamfer", "edges": ["top", "circular"], "size": 1}
+  ]
+}

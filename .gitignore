@@ -1,0 +1,28 @@
+# Python
+.venv/
+.venv-wsl/
+__pycache__/
+*.py[cod]
+*.egg-info/
+build/
+dist/
+
+# local output
+install.log
+hermes/config-snippet.generated.yaml
+tests/selftest_out/
+generated/
+backups/
+*.FCStd1
+*.blend1
+
+# OS / editors
+.DS_Store
+Thumbs.db
+desktop.ini
+.vscode/
+.idea/
+
+# one-off publishing helpers
+*.bundle
+publish_to_github.bat

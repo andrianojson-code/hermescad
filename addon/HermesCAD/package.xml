@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
+<package format="1" xmlns="https://wiki.freecad.org/Package_Metadata">
+  <name>HermesCAD</name>
+  <description>Drive FreeCAD from the Hermes agent: image/drawing to parametric PartDesign model over MCP.</description>
+  <version>0.1.0</version>
+  <date>2026-10-16</date>
+  <maintainer email="263343432+andrianojson-code@users.noreply.github.com">HermesCAD contributors</maintainer>
+  <url type="repository" branch="main">https://github.com/andrianojson-code/hermescad</url>
+  <url type="bugtracker">https://github.com/andrianojson-code/hermescad/issues</url>
+  <url type="readme">https://github.com/andrianojson-code/hermescad/blob/main/README.md</url>
+  <license file="LICENSE">MIT</license>
+  <content>
+    <workbench>
+      <classname>HermesCADWorkbench</classname>
+      <subdirectory>./</subdirectory>
+      <icon>icons/hermescad.svg</icon>
+      <freecadmin>1.0.0</freecadmin>
+    </workbench>
+  </content>
+</package>

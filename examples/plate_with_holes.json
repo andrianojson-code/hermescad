@@ -1,0 +1,18 @@
+{
+  "name": "MountPlate",
+  "parameters": {"L": 80, "W": 50, "T": 6, "hole_d": 6.5, "margin": 8, "R": 4},
+  "features": [
+    {"id": "base", "type": "pad", "plane": "XY",
+     "profile": {"type": "rect", "w": "L", "h": "W"}, "length": "T"},
+    {"id": "corner_holes", "type": "hole", "plane": "XY", "offset": "T",
+     "profiles": [
+       {"type": "circle", "d": "hole_d", "x": "L/2-margin", "y": "W/2-margin"},
+       {"type": "circle", "d": "hole_d", "x": "-(L/2-margin)", "y": "W/2-margin"},
+       {"type": "circle", "d": "hole_d", "x": "L/2-margin", "y": "-(W/2-margin)"},
+       {"type": "circle", "d": "hole_d", "x": "-(L/2-margin)", "y": "-(W/2-margin)"}
+     ]},
+    {"id": "center_slot", "type": "pocket", "plane": "XY", "offset": "T",
+     "profile": {"type": "slot", "length": 30, "w": 10}, "through_all": true},
+    {"id": "round_corners", "type": "fillet", "edges": "vertical", "radius": "R"}
+  ]
+}

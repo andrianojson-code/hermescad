@@ -1,0 +1,36 @@
+# Add to Hermes config.yaml (%LOCALAPPDATA%\hermes\ for the desktop app, %USERPROFILE%\.hermes\ for the CLI).
+# install.ps1 writes a ready version with your real paths to hermes\config-snippet.generated.yaml
+mcp_servers:
+  hermescad:
+    command: 'C:\path\to\hermescad\.venv\Scripts\python.exe'
+    args: ["-m", "hermescad_mcp"]
+    env:
+      HERMESCAD_HOST: "127.0.0.1"
+      HERMESCAD_PORT: "9876"
+      HERMESCAD_TOKEN: ""
+    timeout: 300
+    connect_timeout: 30
+  hermes3d:                       # Blender part (picture -> 3D mesh)
+    command: 'C:\path\to\hermescad\.venv\Scripts\python.exe'
+    args: ["-m", "hermescad_mcp.blender"]
+    env:
+      HERMES3D_HOST: "127.0.0.1"
+      HERMES3D_PORT: "9877"
+      HERMES3D_OUT: 'C:\path\to\hermescad\generated'
+      HF_TOKEN: ""                # optional, free Hugging Face token: bigger daily GPU quota
+      TRIPO_API_KEY: ""           # optional, paid Tripo API
+    timeout: 900
+    connect_timeout: 60
+
+# Hermes inside WSL2 instead: run the MCP server inside WSL (Linux python):
+#   cd /mnt/c/path/to/hermescad && python3 -m venv .venv-wsl && .venv-wsl/bin/pip install -e ./mcp_server
+# mcp_servers:
+#   hermescad:
+#     command: "/mnt/c/path/to/hermescad/.venv-wsl/bin/python"
+#     args: ["-m", "hermescad_mcp"]
+#     env:
+#       HERMESCAD_HOST: "127.0.0.1"   # works with WSL mirrored networking; with NAT use the
+#                                     # Windows host IP (ip route | awk '/default/{print $3}')
+#       HERMESCAD_PORT: "9876"        # and in FreeCAD set Host 0.0.0.0 + a Token
+#       HERMESCAD_TOKEN: "<same token as in FreeCAD>"
+#     timeout: 300
